@@ -23,12 +23,13 @@ function leafGeometry(d, slot) {
 //Paesi con il miglior rapporto GDP/CO2 fra le economie sviluppate, per un dato anno
 function computeEfficientSet(year) {
   const candidates = allData.filter(d => d.year === year && d.gdp > EFFICIENCY_GDP_THRESHOLD);
-  const ranked = candidates
-    .map(d => ({ iso3: d.iso3, ratio: d.gdp / d.co2 }))
-    .sort((a, b) => b.ratio - a.ratio)
-    .slice(0, EFFICIENCY_TOP_N)
+  const ratios = candidates.map(d => d.gdp / d.co2);
+  const medianRatio = d3.median(ratios);
+
+  const eligible = candidates
+    .filter(d => (d.gdp / d.co2) > medianRatio)
     .map(d => d.iso3);
-  return new Set(ranked);
+  return new Set(eligible);
 }
 
 //Calcolo delle posizioni una volta per anno

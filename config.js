@@ -15,8 +15,7 @@ const YEARS = d3.range(2000, 2023);
 const COLLIDE_RADIUS = 15; //x distanza minima tra gli steli in px
 const LEAF_RADIUS = 42; 
 
-const EFFICIENCY_GDP_THRESHOLD = 25000; // soglia per paesi modello con foglie
-const EFFICIENCY_TOP_N = 6;             
+const EFFICIENCY_GDP_THRESHOLD = 14000; // soglia per paesi modello con foglie            
 
 /*
   ============================================================

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Blooming Inequalities</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <button id="menuToggle" aria-label="Open legend and country selection">☰</button>
+  <button id="homeButton" aria-label="Back to home">⌂</button>
+
+  <div id="langToggle">
+    <span class="lang-option active" data-lang="en">EN</span>
+    <span class="lang-sep">|</span>
+    <span class="lang-option" data-lang="it">IT</span>
+  </div>
+
+  <div id="controls">
+    <button id="playBtn">Stop</button>
+    <input type="range" id="yearSlider" min="2000" max="2022" step="1" value="2000">
+    <span id="yearLabel">2000</span>
+  </div>
+
+  <div id="side-panel">
+    <svg id="legend" width="260" height="400"></svg>
+    <hr>
+    <div class="panel-section-title" id="selectPaesiTitle">Select countries</div>
+    <input type="text" id="countrySearch" placeholder="Search country...">
+    <div id="countryCheckboxes"></div>
+    <div class="panel-buttons">
+      <button id="confirmSelection">Confirm selection</button>
+      <button id="resetSelection">Show all</button>
+    </div>
+  </div>
+
+  <div id="y-axis-fixed"><svg id="y-axis-svg" width="90" height="920"></svg></div>
+  <div id="x-axis-fixed">
+    <svg id="x-axis-svg" height="50"></svg>
+    <div class="x-axis-label-static" id="xAxisLabel">CO2 emissions per capita (tonnes/year) →</div>
+  </div>
+
+  <div id="scroll-container">
+
+    <section id="hero-panel">
+      <div class="hero-left">
+        <h1>Bloom<span class="i-flower-wrap">ı<svg id="iTitleFlower" class="i-flower" viewBox="0 0 40 60"></svg></span>ng Inequalities</h1>
+        <p class="hero-subtitle" id="heroSubtitle">Some countries grew by burning the atmosphere. Others are paying for it.</p>
+      </div>
+      <div class="hero-right">
+        <svg id="hero-flowers" width="650" height="650"></svg>
+      </div>
+      <div class="scroll-hint scroll-hint-center">scroll to continue →</div>
+    </section>
+
+    <section id="section-continents" class="explain-panel">
+      <div class="explain-left">
+        <h2 id="explainTitle">If you wanna grow you have to emit</h2>
+        <p id="introP1">Every flower on this page is a country.</p>
+        <p id="introP2">Its color marks its continent.</p>
+        <div class="continent-examples" id="continentExamples"></div>
+      </div>
+      <div class="scroll-hint scroll-hint-center">scroll to continue →</div>
+    </section>
+
+    <section id="section-variables" class="explain-panel">
+      <div class="explain-grid">
+        <p id="introP3">The taller the stem, the richer the country: height reflects
+          <span class="term-tooltip" id="gdpTerm">GDP per capita</span>.
+        </p>
+        <div class="mini-icon" id="iconHeight">
+          <svg width="220" height="150" viewBox="0 0 220 150"></svg>
+        </div>
+
+        <p id="introP4">The further right a flower stands, the more CO2 it emits per person, every year.</p>
+        <div class="mini-icon" id="iconPosition">
+          <svg width="260" height="80" viewBox="0 0 260 80"></svg>
+        </div>
+
+        <p id="introP5">The fuller its petals, the larger its population.</p>
+        <div class="mini-icon" id="iconFan">
+          <svg width="260" height="100" viewBox="0 0 260 100"></svg>
+        </div>
+      </div>
+      <div class="scroll-hint scroll-hint-center">scroll to continue →</div>
+    </section>
+
+    <section id="section-outcomes" class="explain-panel">
+      <div class="explain-grid">
+        <p id="introP6">Grey flowers are the countries most vulnerable to climate change today. The rare ones with a small leaf are the &ldquo;model&rdquo; cases — wealthy nations that kept their emissions low.</p>
+        <div class="mini-icon" id="iconLeaf">
+          <svg width="260" height="100" viewBox="0 0 260 100"></svg>
+        </div>
+
+        <p id="introP7">Many countries — like the United States and China — emitted enormously over the decades, and grew rich doing it. Others — like Ethiopia and Rwanda — have emitted almost nothing, and still struggle to grow at all.</p>
+        <div class="mini-icon" id="iconOutcome">
+          <svg width="300" height="110" viewBox="0 0 300 110"></svg>
+        </div>
+      </div>
+      <div class="scroll-hint scroll-hint-center">scroll to continue →</div>
+    </section>
+
+    <section id="section-closing" class="explain-panel">
+      <div class="explain-left">
+        <p id="introP8" class="intro-closing">Watch how, scrolling through the years from 2000 to 2022, wealthy countries keep growing while the most vulnerable are left behind — despite having contributed the least to the problem that is hurting them.</p>
+      </div>
+      <div class="scroll-hint scroll-hint-center">scroll to see the graph →</div>
+    </section>
+
+    <section id="chart-panel">
+      <svg id="chart" width="6400" height="920"></svg>
+    </section>
+
+  </div>
+
+  <div id="tooltip"></div>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+
+  <script src="config.js"></script>
+  <script src="encoding.js"></script>
+  <script src="ui-panels.js"></script>
+  <script src="legend.js"></script>
+  <script src="animation.js"></script>
+  <script src="chart.js"></script>
+  <script src="main.js"></script>
+
+</body>
+</html>

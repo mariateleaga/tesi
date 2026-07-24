@@ -11,13 +11,12 @@ d3.csv("data/flowers_data.csv", d => ({
 
   allData = data;
   const maxGDP = d3.max(allData, d => d.gdp);
-
-  //Riferimento popolazione Cina unità di misura del ventaglio pieno
-  CHINA_POP_REF = d3.max(allData.filter(d => d.iso3 === "CHN"), d => d.population);
+  const maxCO2 = d3.max(allData, d => d.co2);
+  const maxPOP = d3.max(allData, d => d.population);
 
   //calcolo asseX - CO2
   xScale = d3.scaleSqrt()
-    .domain([0, d3.max(allData, d => d.co2)])
+    .domain([0, maxCO2])
     .range([110, width - 150]);
 
   //calcolo GDP - Altezza Stelo
@@ -31,8 +30,8 @@ d3.csv("data/flowers_data.csv", d => ({
 
   //Calcolo Popolazione
   popScale = d3.scaleSqrt()
-    .domain([0, CHINA_POP_REF])
-    .range([0, 1]);
+  .domain([0, maxPOP])
+  .range([0, 1]);
 
   computeBeeswarmPositions();
 
